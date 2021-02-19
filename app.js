@@ -1,7 +1,7 @@
 const express=require("express");
 const bodyParser=require("body-parser");
 const https=require("https");
-const request=require("request");
+const got=require("got");
 
 const app=express();
 
@@ -34,7 +34,7 @@ app.post("/",function(req,res){
         method:"POST",
         auth:"lucky:e0d9767ab5ddb47afb61e608c5d88548-us1"
     }
-    const request=https.request(url,options,function(response){
+    const request=https.got(url,options,function(response){
         response.on("data",function(data){
             console.log(JSON.parse(data));
         })

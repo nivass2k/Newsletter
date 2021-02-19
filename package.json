@@ -4,11 +4,13 @@
   "description": "Newsletter application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1","start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "got": "^11.8.1",
     "request": "^2.88.2"
   }
 }
