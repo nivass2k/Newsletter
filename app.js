@@ -10,9 +10,7 @@ app.get("/",function(req,res){
     res.sendFile(__dirname+"/signup.html");
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+app.listen(process.env.PORT || 3000);
 
 var mailchimpInstance   = 'us1',
     listUniqueId        = '5d35073faf',
