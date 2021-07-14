@@ -11,8 +11,8 @@ app.get("/",function(req,res){
 app.listen(process.env.PORT || 3000);
 
 var mailchimpInstance   = 'us1',
-    listUniqueId        = '5d35073faf',
-    mailchimpApiKey     = 'e0d9767ab5ddb47afb61e608c5d88548-us1';
+    listUniqueId        = process.env.MAILCHIMPID,
+    mailchimpApiKey     = process.env.MAILCHIMPAPIKEY;
 
 app.post('/', function (req, res) {
   console.log(req.body.firstname)
