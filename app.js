@@ -1,11 +1,9 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+const { urlencoded } = require("express");
+const express = require("express");
 var request = require('superagent');
 var app = express();
 app.use(express.static('public'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(express.urlencoded({ extended: true }));
 app.get("/",function(req,res){
     res.sendFile(__dirname+"/signup.html");
 });
@@ -17,10 +15,11 @@ var mailchimpInstance   = 'us1',
     mailchimpApiKey     = 'e0d9767ab5ddb47afb61e608c5d88548-us1';
 
 app.post('/', function (req, res) {
+  console.log(req.body.firstname)
     request
         .post('https://' + mailchimpInstance + '.api.mailchimp.com/3.0/lists/' + listUniqueId + '/members/')
         .set('Content-Type', 'application/json;charset=utf-8')
-        .set('Authorization', 'Basic ' + new Buffer('any:' + mailchimpApiKey ).toString('base64'))
+        .set('Authorization', 'Basic ' + new Buffer.from('any:' + mailchimpApiKey ).toString('base64'))
         .send({
           'email_address': req.body.inputEmail,
           'status': 'subscribed',
